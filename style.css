@@ -1,0 +1,219 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #fdf6ec, #faeee7);
+  color: #333;
+  text-align: center;
+  transition: background 0.6s ease, color 0.3s ease;
+}
+
+header {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  position: relative;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.search-box {
+  margin: 1rem 0;
+}
+
+input#cityInput {
+  padding: 8px;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin: 0.5rem;
+  padding: 8px 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffcf88;
+  color: #4b2e1e;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: #ffc266;
+}
+
+body.starry {
+  background: url('https://cdn.pixabay.com/photo/2017/08/30/07/52/stars-2695569_1280.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+body.night-mode {
+  background: #0b0c2a;
+  color: #f0f0f0;
+}
+
+.flip-card {
+  perspective: 1000px;
+  width: 300px;
+  height: 210px;
+  margin: 2.5rem auto;
+  background: transparent;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.45,0.05,0.55,0.95);
+}
+
+.flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.flip-front {
+  background: rgba(255,255,255,0.82);
+  color: #333;
+}
+
+.flip-back {
+  background: rgba(0,0,0,0.82);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+#map {
+  height: 400px;
+  margin: 2rem auto;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+}
+
+.popup {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  padding: 1rem;
+  z-index: 999;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.typing::after {
+  content: '|';
+  animation: blink 1s step-start infinite;
+  color: #888;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.compare-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* 完美居中 */
+  gap: 32px;
+  margin-bottom: 3rem;
+}
+
+.compare-cards.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .compare-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.cancel-compare {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.cancel-compare button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffaaaa;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+}
+.cancel-compare button:hover {
+  background-color: #ff8888;
+}
+.cancel-compare.hidden {
+  display: none;
+}
+
+footer {
+  margin-top: 2rem;
+  color: #666;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+#loadingOverlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255,255,255,0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+#loadingOverlay.active { display: flex; }
+
+.spinner {
+  border: 7px solid #ffdeae;
+  border-top: 7px solid #ffc266;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg);}
+}
